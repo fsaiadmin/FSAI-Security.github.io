@@ -45,27 +45,43 @@
 
     <h2>✅ Tool Security Verification</h2>
     <p>Security Checked</p>
-    <p>Valid Until December 2025</p>
+    <p>Valid Until December 2026</p>
     <p class="status" id="scan-time">🕒 Scan Time: ...</p>
     <p class="status" id="expiry-status">⏳ Expiry Status: Checking...</p>
     <p class="status">🔒 Status: SECURED</p>
   </div>
 
   <script>
-    // Show scan time
-    const scanTime = new Date();
-    document.getElementById("scan-time").textContent = "🕒 Scan Time: " + scanTime.toLocaleString();
+  const params = new URLSearchParams(window.location.search);
+  const toolId = params.get("tool") || "UNKNOWN";
+  const issuedDate = params.get("issued") || "N/A";
 
-    // Check expiration
-    const expiryStatus = document.getElementById("expiry-status");
-    const expiryDate = new Date("2025-12-31");
+  const scanTime = new Date();
+  const scanEl = document.getElementById("scan-time");
+  if (scanEl) {
+    scanEl.textContent = "🕒 Scan Time: " + scanTime.toLocaleString();
+  }
 
+  const expiryDate = new Date("2026-12-31");
+  const expiryEl = document.getElementById("expiry-status");
+
+  if (expiryEl) {
     if (scanTime > expiryDate) {
-      expiryStatus.innerHTML = "⛔ Expiry Status: <span class='expired'>EXPIRED</span>";
+      expiryEl.innerHTML = "⛔ Expiry Status: <span class='expired'>EXPIRED</span>";
     } else {
-      expiryStatus.innerHTML = "✅ Expiry Status: <span>VALID</span>";
+      expiryEl.innerHTML = "✅ Expiry Status: <span>VALID</span>";
     }
-  </script>
+  }
+
+  const box = document.querySelector(".box");
+  if (box) {
+    box.insertAdjacentHTML(
+      "afterbegin",
+      "<p><strong>Tool ID:</strong> " + toolId + "</p>" +
+      "<p><strong>Issued Date:</strong> " + issuedDate + "</p>"
+    );
+  }
+</script>
 
 </body>
 </html>

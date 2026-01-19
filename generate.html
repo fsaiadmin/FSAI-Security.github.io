@@ -58,7 +58,13 @@
 
 <script>
   function generateQRCode() {
-    const qrText = "https://fsaiadmin.github.io/FSAI-Security.github.io/verify.html";
+    const toolId = "FSAI-SEC-001";
+    const issued = new Date().toISOString().split("T")[0];
+
+    const qrText =
+      "https://fsaiadmin.github.io/FSAI-Security.github.io/verify.html" +
+      "?tool=" + encodeURIComponent(toolId) +
+      "&issued=" + encodeURIComponent(issued);
 
     const container = document.getElementById("qrcode");
     container.innerHTML = "";
@@ -87,15 +93,10 @@
       return;
     }
 
-    const link = document.createElement('a');
+    const link = document.createElement("a");
     link.href = dataUrl;
     link.download = "security-checked-qr.png";
-
-    if (navigator.userAgent.includes("Safari") && !navigator.userAgent.includes("Chrome")) {
-      window.open(dataUrl, '_blank');
-    } else {
-      link.click();
-    }
+    link.click();
   }
 </script>
 
