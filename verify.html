@@ -1,0 +1,71 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Security Tag Verified</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f0fff0;
+      padding: 30px;
+      text-align: center;
+    }
+    .box {
+      background-color: #d4edda;
+      border: 2px solid #28a745;
+      padding: 20px;
+      border-radius: 10px;
+      max-width: 400px;
+      margin: 0 auto;
+    }
+    h2 {
+      color: #155724;
+    }
+    p {
+      font-size: 18px;
+      margin: 10px 0;
+    }
+    .status {
+      font-weight: bold;
+      color: #155724;
+      margin-top: 20px;
+    }
+    .expired {
+      color: red;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="box">
+<!-- Add the company logo at the top -->
+  <img src="path-to-your-logo.png" alt="Company Logo" class="logo">
+
+    <h2>✅ Tool Security Verification</h2>
+    <p>Security Checked</p>
+    <p>Valid Until December 2025</p>
+    <p class="status" id="scan-time">🕒 Scan Time: ...</p>
+    <p class="status" id="expiry-status">⏳ Expiry Status: Checking...</p>
+    <p class="status">🔒 Status: SECURED</p>
+  </div>
+
+  <script>
+    // Show scan time
+    const scanTime = new Date();
+    document.getElementById("scan-time").textContent = "🕒 Scan Time: " + scanTime.toLocaleString();
+
+    // Check expiration
+    const expiryStatus = document.getElementById("expiry-status");
+    const expiryDate = new Date("2025-12-31");
+
+    if (scanTime > expiryDate) {
+      expiryStatus.innerHTML = "⛔ Expiry Status: <span class='expired'>EXPIRED</span>";
+    } else {
+      expiryStatus.innerHTML = "✅ Expiry Status: <span>VALID</span>";
+    }
+  </script>
+
+</body>
+</html>
