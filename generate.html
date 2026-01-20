@@ -59,12 +59,11 @@
 <script>
   function generateQRCode() {
     const toolId = "FSAI-SEC-001";
-    const issued = new Date().toISOString().split("T")[0];
+
 
     const qrText =
       "https://fsaiadmin.github.io/FSAI-Security.github.io/verify.html" +
-      "?tool=" + encodeURIComponent(toolId) +
-      "&issued=" + encodeURIComponent(issued);
+      "?tool=" + encodeURIComponent(toolId);     
 
     const container = document.getElementById("qrcode");
     container.innerHTML = "";
