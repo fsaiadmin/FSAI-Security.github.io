@@ -54,7 +54,6 @@
   <script>
   const params = new URLSearchParams(window.location.search);
   const toolId = params.get("tool") || "UNKNOWN";
-  const issuedDate = params.get("issued") || "N/A";
 
   const scanTime = new Date();
   const scanEl = document.getElementById("scan-time");
@@ -77,8 +76,7 @@
   if (box) {
     box.insertAdjacentHTML(
       "afterbegin",
-      "<p><strong>Tool ID:</strong> " + toolId + "</p>" +
-      "<p><strong>Issued Date:</strong> " + issuedDate + "</p>"
+      "<p><strong>Tool ID:</strong> " + toolId + "</p>"       
     );
   }
 </script>
